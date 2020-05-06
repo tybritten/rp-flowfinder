@@ -1,0 +1,21 @@
+{
+  "name": "rp-flowfinder",
+  "version": "0.0.2",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "rp-flowfinder": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "arg": "^4.1.3",
+    "chalk": "^4.0.0",
+    "esm": "^3.2.25",
+    "inquirer": "^7.1.0"
+  }
+}
