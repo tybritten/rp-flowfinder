@@ -2,7 +2,7 @@
 
 This tool will search exported flows from [RapidPro](https://github.com/rapidpro/rapidpro) to find values for specific keys.
 
-`rp-flowfinder _filename_ --property|-p --string|-s [--hostname|-h]`
+`rp-flowfinder filename --property|-p --string|-s [--hostname|-h]`
 
 _filename_ is the path to the JSON flow export file
 --property is the string of the node property you're looking for (type, url, etc.)
