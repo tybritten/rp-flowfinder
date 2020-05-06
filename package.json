@@ -1,7 +1,8 @@
 {
   "name": "rp-flowfinder",
   "version": "0.0.2",
-  "description": "",
+  "description": "Searches exported flows from RapidPro",
+  "repository": "https://github.com/tybritten/rp-flowfinder",
   "main": "index.js",
   "bin": {
     "rp-flowfinder": "./index.js"
@@ -10,7 +11,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Tyler Britten",
   "license": "ISC",
   "dependencies": {
     "arg": "^4.1.3",
