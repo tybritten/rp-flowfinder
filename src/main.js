@@ -8,7 +8,7 @@ const getFlowsFromFile = (file) => {
 
 export async function searchFlow({ property, string, file, hostname }) {
   console.log(
-    `All the Flows in file: ${chalk.white.bold(
+    `All the flows in file: ${chalk.white.bold(
       file
     )} That have a property ${chalk.white.bold(
       property
@@ -24,7 +24,7 @@ export async function searchFlow({ property, string, file, hostname }) {
           let item = node[property];
           if (item && item.includes(string)) {
             console.log(
-              `${flows.flows[i].name}  - https:/${hostname}/flow/editor_next/${flows.flows[i].uuid}`
+              `${chalk.white.bold(flows.flows[i].name)}  - https:/${hostname}/flow/editor_next/${flows.flows[i].uuid}`
             );
           }
         }
