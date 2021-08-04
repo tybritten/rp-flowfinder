@@ -19,13 +19,19 @@ export async function searchFlow({ property, string, file, hostname }) {
   for (let i = 0; i < flows.flows.length; i += 1) {
     if (flows.flows[i].nodes) {
       for (let b = 0; b < flows.flows[i].nodes.length; b += 1) {
-        for (let c = 0; c < flows.flows[i].nodes[b].actions.length; c += 1) {
-          let node = flows.flows[i].nodes[b].actions[c];
-          let item = node[property];
-          if (item && item.includes(string)) {
-            console.log(
-              `${chalk.white.bold(flows.flows[i].name)}  - https:/${hostname}/flow/editor_next/${flows.flows[i].uuid}`
-            );
+        if (flows.flows[i].nodes[b].actions) {
+          for (let c = 0; c < flows.flows[i].nodes[b].actions.length; c += 1) {
+            let node = flows.flows[i].nodes[b].actions[c];
+            let item = node[property];
+            if (item && item.includes(string)) {
+              console.log(
+                `${chalk.white.bold(
+                  flows.flows[i].name
+                )}  - https:/${hostname}/flow/editor_next/${
+                  flows.flows[i].uuid
+                }`
+              );
+            }
           }
         }
       }
