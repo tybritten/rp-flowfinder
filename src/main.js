@@ -27,7 +27,7 @@ export async function searchFlow({ property, string, file, hostname }) {
               console.log(
                 `${chalk.white.bold(
                   flows.flows[i].name
-                )}  - https:/${hostname}/flow/editor_next/${
+                )}  - https:/${hostname}/flow/editor/${
                   flows.flows[i].uuid
                 }`
               );
