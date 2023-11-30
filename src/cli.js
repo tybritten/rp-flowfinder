@@ -1,6 +1,6 @@
 import arg from "arg";
 import inquirer from "inquirer";
-import { searchFlow } from "./main";
+import { searchFlow } from "./main.js";
 
 function parseArgumentsIntoOptions(rawArgs) {
   const args = arg(
@@ -57,8 +57,10 @@ async function promptForMissingOptions(options) {
   };
 }
 
-export async function cli(args) {
+async function cli(args) {
   let options = parseArgumentsIntoOptions(args);
   options = await promptForMissingOptions(options);
   searchFlow(options);
 }
+
+export default cli;
