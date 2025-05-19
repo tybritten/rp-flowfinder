@@ -22,7 +22,14 @@ export async function searchFlow({ property, string, file, hostname }) {
         if (flows.flows[i].nodes[b].actions) {
           for (let c = 0; c < flows.flows[i].nodes[b].actions.length; c += 1) {
             let node = flows.flows[i].nodes[b].actions[c];
-            let item = node[property];
+            let item = "";
+            if (property.includes(".") && (property.split(".")[0] in node)){
+              let subitems = property.split(".")[0];
+              let subprop = property.split(".")[1];
+              item = node[subitems][subprop];
+            } else {
+              item = node[property];
+            }
             if (item && item.includes(string)) {
               console.log(
                 `${chalk.white.bold(
