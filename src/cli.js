@@ -1,6 +1,13 @@
 import arg from "arg";
 import inquirer from "inquirer";
 import { searchFlow } from "./main.js";
+import { readFileSync } from "fs";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const packageJson = JSON.parse(readFileSync(join(__dirname, "../package.json"), "utf8"));
 
 function parseArgumentsIntoOptions(rawArgs) {
   const args = arg(
@@ -8,9 +15,11 @@ function parseArgumentsIntoOptions(rawArgs) {
       "--property": String,
       "--string": String,
       "--hostname": String,
+      "--version": Boolean,
       "-p": "--property",
       "-s": "--string",
       "-h": "--hostname",
+      "-v": "--version",
     },
     {
       argv: rawArgs.slice(2),
@@ -21,6 +30,7 @@ function parseArgumentsIntoOptions(rawArgs) {
     string: args["--string"] || null,
     hostname: args["--hostname"] || "localhost",
     file: args._[0],
+    version: args["--version"] || false,
   };
 }
 
@@ -59,6 +69,12 @@ async function promptForMissingOptions(options) {
 
 async function cli(args) {
   let options = parseArgumentsIntoOptions(args);
+  
+  if (options.version) {
+    console.log(`rp-flowfinder v${packageJson.version}`);
+    return;
+  }
+  
   options = await promptForMissingOptions(options);
   searchFlow(options);
 }

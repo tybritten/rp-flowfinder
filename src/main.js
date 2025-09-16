@@ -30,14 +30,26 @@ export async function searchFlow({ property, string, file, hostname }) {
             } else {
               item = node[property];
             }
-            if (item && item.includes(string)) {
-              console.log(
-                `${chalk.white.bold(
-                  flows.flows[i].name
-                )}  - https:/${hostname}/flow/editor/${
-                  flows.flows[i].uuid
-                }`
-              );
+            if (item) {
+              if (typeof item === 'string' && item.includes(string)) {
+                console.log(
+                  `${chalk.white.bold(
+                    flows.flows[i].name
+                  )}  - https:/${hostname}/flow/editor/${
+                    flows.flows[i].uuid
+                  }`
+                );
+              } else if (typeof item !== 'string') {
+                console.log(
+                  `${chalk.yellow('Non-string item found:')} ${chalk.cyan(typeof item)} in flow ${chalk.white.bold(flows.flows[i].name)}`
+                );
+                if (typeof item === 'object' && item !== null) {
+                  const keys = Object.keys(item);
+                  console.log(`${chalk.gray('Object keys:')} ${chalk.cyan(keys.join(', '))}`);
+                } else {
+                  console.log(`${chalk.gray('Value:')}`, item);
+                }
+              }
             }
           }
         }
